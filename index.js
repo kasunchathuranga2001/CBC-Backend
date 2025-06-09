@@ -4,12 +4,14 @@ import mongoose from "mongoose";
 import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
 import jwt, { decode } from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config()
 
 const app = express();
 
 
-const mongoURL = "mongodb+srv://Admin:1234@cluster0.wxjo8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const mongoURL = process.env.MONGO_DB_URL
 
 mongoose.connect(mongoURL,{})
 const connection = mongoose.connection;
@@ -17,7 +19,7 @@ const connection = mongoose.connection;
 connection.once("open",()=>{
     console.log("Database conected");
 })
-
+ 
 app.use(bodyParser.json())
 
 app.use(
