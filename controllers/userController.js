@@ -49,7 +49,7 @@ export function logingUser(req,res) {
                         isBlocked : user.isBlocked,
                         type : user.type,
                         profilePicture : user.profilePicture 
-                    }, "cbc-2001")
+                    }, "process.env.SECRET")
 
                     console.log(token)
 
