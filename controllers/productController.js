@@ -1,15 +1,31 @@
 import Product from "../models/product.js";
 
-export function loginUser(req,res){
-    (users)=>{
+export function createProduct(req,res) {
+
+    if(isAdmin(req)){
         res.json({
-            message: "User logged in",
-            token: token
-        }) 
-    } else{
-        res.json({
-            massage: "User not logged in (wrong pasword)"
+            message : "please login as administrator to add  products"
         })
     }
+    return
 }
 
+const newProductData = req.body
+
+const product = new Product(newProductData)
+
+product.save().then(()=>{
+    res.json({
+        message: "Product created"
+    })
+}).catch((error)=>{
+    res.json({
+        message: error
+    })
+})
+
+export function getProducts(req,res){
+    Product.find({}).then((products)=>{
+        res.json(products)
+    })
+}
