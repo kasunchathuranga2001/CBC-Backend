@@ -45,6 +45,7 @@ app.use(
 
 
 app.use("/api/Users",userRouter) 
+app.use("/api/Products",productRouter) 
 
  
 
