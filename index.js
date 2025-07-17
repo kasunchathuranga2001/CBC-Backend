@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
 import jwt, { decode } from "jsonwebtoken";
 import dotenv from "dotenv";
+import orderRouter from "./routes/orderRouter.js";
+import productRouter from "./routes/productRouter.js";
+
 
 dotenv.config()
 
@@ -46,6 +49,7 @@ app.use(
 
 app.use("/api/Users",userRouter) 
 app.use("/api/Products",productRouter) 
+app.use("/api/orders",orderRouter)
 
  
 
